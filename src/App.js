@@ -22,6 +22,20 @@ class App extends Component{
       showCars: !this.state.showCars
     })
   }
+  onChangeName=(name, index)=>{
+    const car = this.state.cars[index];
+    car.name=name;
+    const cars  = [...this.state.cars]
+    cars[index] = car;
+    this.setState({
+      cars: cars
+    })
+  }
+  deleteHandler(index){
+    const cars = this.state.cars.concat()
+    cars.splice(index, 1)
+    this.setState({cars})
+  }
   render(){
     const divStyle = {
     textAlign: 'center', 
@@ -44,7 +58,8 @@ class App extends Component{
                   keys={index}
                     name={car.name} 
                     year={car.year}
-                    onChangeTitle={()=>this.changeTitleHandler(car.name)}
+                    onDelete={this.deleteHandler.bind(this, index)}
+                    onChangeName={(event)=>this.onChangeName(event.target.value, index)}
                   />
                 )
               })

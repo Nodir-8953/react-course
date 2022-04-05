@@ -1,8 +1,12 @@
 import React from 'react';
 
 export default (props)=>
-(<div>
+(<div style={{
+    border: '1px solid #ccc', 
+    marginbottom: '10px'
+}}>
     <strong>Car name: {props.name}</strong>
     <div>Car year: {props.year}</div>
-    <button onClick={props.onChangeTitle}>change</button>
+    <input type="text" onChange={props.onChangeName} value={props.name}/>
+    <button onClick={props.onDelete}>Delete</button>
 </div>);
