@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App title={'It is props title'}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

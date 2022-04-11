@@ -1,12 +1,32 @@
 import React from 'react';
-
-export default (props)=>
-(<div style={{
-    border: '1px solid #ccc', 
-    marginbottom: '10px'
-}}>
-    <strong>Car name: {props.name}</strong>
-    <div>Car year: {props.year}</div>
-    <input type="text" onChange={props.onChangeName} value={props.name}/>
-    <button onClick={props.onDelete}>Delete</button>
-</div>);
+import './Car.scss'
+class Car extends React.Component{
+    render(){
+        const inputClasses = ['input']
+            if (this.props.name !== ''){
+                inputClasses.push('green')
+            } else{
+                inputClasses.push('red')
+            }
+            if(this.props.name.length>5){
+                inputClasses.push('bold')
+            }
+            return(
+                <div className='Car' >
+                    <strong>Car name: {this.props.name}</strong>
+                    <div>Car year: {this.props.year}</div>
+                    <input 
+                        type="text" 
+                        onChange={this.props.onChangeName} 
+                        value={this.props.name}
+                        className={inputClasses.join(' ')}   
+                    />
+                    <button onClick={this.props.onDelete}>Delete</button>
+                </div>  
+                )
+            
+        
+    }
+    
+}
+export default Car

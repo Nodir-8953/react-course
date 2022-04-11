@@ -1,16 +1,20 @@
 import Car from './Car/Car'
 import React, { Component } from 'react'
-import './App.css';
+import './App.scss';
 
 class App extends Component{
-  state = {
-    cars: [
-      {name: 'Ford', year:2017},
-      {name: 'BMW', year:2021},
-      {name: 'Audi', year:2000}
-    ],
-    pageTitle: "React components",
-    showCars: false
+  constructor(props){
+    super(props)
+
+    this.state = {
+      cars: [
+        {name: 'Ford', year:2017},
+        {name: 'BMW', year:2021},
+        {name: 'Audi', year:2000}
+      ],
+      pageTitle: "React components",
+      showCars: false
+    }
   }
   changeTitleHandler = (newTitle) => {
       this.setState({
@@ -36,7 +40,14 @@ class App extends Component{
     cars.splice(index, 1)
     this.setState({cars})
   }
+  componentWillMount(){
+    console.log('wilmount');
+  }
+  componentDidMount(){
+    console.log('didmaunt')
+  }
   render(){
+    console.log("render");
     const divStyle = {
     textAlign: 'center', 
     fontSize: '30px'
@@ -47,8 +58,14 @@ class App extends Component{
           
           <div style={divStyle}>
             <h1 style={{color: 'blue'}}>{this.state.pageTitle}</h1>
+            {/* <h1>{this.props.title}</h1> */}
             <button onClick={this.toggleCars}>Toggle cars</button>
             
+            <div style={{
+              width: 400,
+              margin: 'auto',
+              paddingTop: '20px'
+            }}>
             {
               this.state.showCars
                ?
@@ -66,6 +83,7 @@ class App extends Component{
               :
               null
             }
+            </div>
             
           </div>
         
